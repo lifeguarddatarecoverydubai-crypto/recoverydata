@@ -1,0 +1,82 @@
+# ==========================================
+# Laravel & Application
+# ==========================================
+/vendor
+/node_modules
+/public/build
+/public/hot
+/public/storage
+/public/fonts-manifest.dev.json
+/storage/*.key
+/storage/pail
+*.log
+
+# ==========================================
+# Environment & Sensitive Credentials
+# ==========================================
+.env
+.env.backup
+.env.production
+.env.*.local
+/auth.json
+
+# ==========================================
+# Database & Backup Files
+# ==========================================
+*.sql
+*.sql.gz
+*.sql.zip
+*.zip
+*.tar.gz
+*.7z
+database/*.sqlite
+database/*.sqlite-journal
+/database/backups/
+/recoverydata_db_backup/
+
+# ==========================================
+# Testing & Code Quality Caches
+# ==========================================
+.phpunit.result.cache
+/.phpunit.cache
+.php-cs-fixer.cache
+.pest/
+
+# ==========================================
+# Package Manager Logs
+# ==========================================
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.npm
+
+# ==========================================
+# IDEs, Editors & Tools
+# ==========================================
+/.fleet
+/.idea
+/.vscode
+/.zed
+/.nova
+/.cursor/
+/.codex
+*.sublime-project
+*.sublime-workspace
+_ide_helper.php
+_ide_helper_models.php
+.phpactor.json
+Homestead.json
+Homestead.yaml
+
+# ==========================================
+# Operating System Files
+# ==========================================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini

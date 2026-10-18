@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" style="background:#060B18; font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#050B17"/>
+      <stop offset="50%" stop-color="#0B1528"/>
+      <stop offset="100%" stop-color="#070D1B"/>
+    </linearGradient>
+
+    <radialGradient id="centerGlow" cx="50%" cy="38%" r="55%">
+      <stop offset="0%" stop-color="#2563EB" stop-opacity="0.32"/>
+      <stop offset="45%" stop-color="#0284C7" stop-opacity="0.14"/>
+      <stop offset="100%" stop-color="#060B18" stop-opacity="0"/>
+    </radialGradient>
+
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1E293B" stroke-width="0.7" stroke-opacity="0.6"/>
+      <circle cx="40" cy="40" r="1.2" fill="#38BDF8" fill-opacity="0.35"/>
+    </pattern>
+
+    <linearGradient id="badgeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1D4ED8"/>
+      <stop offset="100%" stop-color="#0284C7"/>
+    </linearGradient>
+
+    <linearGradient id="borderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3B82F6" stop-opacity="0.4"/>
+      <stop offset="50%" stop-color="#1E293B" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#06B6D4" stop-opacity="0.4"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bgGrad)"/>
+  <rect width="1200" height="630" fill="url(#grid)" opacity="0.85"/>
+  <rect width="1200" height="630" fill="url(#centerGlow)"/>
+
+  <rect x="18" y="18" width="1164" height="594" rx="20" fill="none" stroke="url(#borderGrad)" stroke-width="2"/>
+  <rect x="24" y="24" width="1152" height="582" rx="16" fill="none" stroke="#0F172A" stroke-width="1"/>
+
+  <!-- TOP BAR: Brand Header &amp; Category Pill -->
+  <g transform="translate(60, 65)">
+    <g transform="translate(0, 0)">
+      <rect x="0" y="-18" width="38" height="38" rx="10" fill="url(#badgeGrad)"/>
+      <path d="M 12 1 L 26 1 M 19 -10 L 19 12 M 14 6 L 19 12 L 24 6" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="48" y="0" font-size="18" font-weight="900" fill="#FFFFFF" letter-spacing="1.5">RECOVERY DATA</text>
+      <text x="48" y="16" font-size="10" font-weight="700" fill="#38BDF8" letter-spacing="2">DUBAI LABORATORY</text>
+    </g>
+
+    <g transform="translate(840, 0)">
+      <rect x="0" y="-14" width="240" height="30" rx="15" fill="#0F172A" stroke="#22D3EE" stroke-width="1.5" stroke-opacity="0.6"/>
+      <circle cx="16" cy="1" r="4.5" fill="#10B981"/>
+      <text x="28" y="5" font-size="11" font-weight="800" fill="#E2E8F0" letter-spacing="0.5">ISO CLASS 100 CERTIFIED</text>
+    </g>
+  </g>
+
+  <!-- CENTER TECH ILLUSTRATION -->
+  
+            <!-- Universal Data Recovery Icon -->
+            <g transform="translate(600, 235)">
+                <circle cx="0" cy="0" r="120" fill="#0B132B" stroke="#2563EB" stroke-width="2" stroke-dasharray="8,6"/>
+                <circle cx="0" cy="0" r="100" fill="#0F172A" stroke="#38BDF8" stroke-width="3"/>
+                <circle cx="0" cy="0" r="70" fill="#1E293B" stroke="#60A5FA" stroke-width="2"/>
+                <circle cx="0" cy="0" r="42" fill="#0F172A" stroke="#38BDF8" stroke-width="1.5"/>
+                <circle cx="0" cy="0" r="16" fill="#38BDF8"/>
+                <circle cx="0" cy="0" r="6" fill="#0F172A"/>
+                <path d="M 0 -85 A 85 85 0 0 1 85 0" fill="none" stroke="#00F0FF" stroke-width="4" stroke-linecap="round"/>
+                <polygon points="85,0 76,-13 93,-9" fill="#00F0FF"/>
+                <path d="M 0 85 A 85 85 0 0 1 -85 0" fill="none" stroke="#00F0FF" stroke-width="4" stroke-linecap="round"/>
+                <polygon points="-85,0 -76,13 -93,9" fill="#00F0FF"/>
+            </g>
+        
+
+  <!-- BOTTOM CARD: Main Title, Subtitle, &amp; Forensic Specs -->
+  <g transform="translate(60, 430)">
+    <rect x="0" y="0" width="186" height="24" rx="6" fill="#1E293B" stroke="#3B82F6" stroke-width="1"/>
+    <text x="12" y="16" font-size="11" font-weight="800" fill="#38BDF8" letter-spacing="1">SERVICES DIRECTORY</text>
+
+    <text x="0" y="58" font-size="34" font-weight="900" fill="#FFFFFF" letter-spacing="-0.5">Data Recovery Practice Areas</text>
+    <text x="0" y="92" font-size="16" font-weight="500" fill="#94A3B8">Comprehensive Laboratory Solutions for All Storage Media &amp; File Types</text>
+
+    <g transform="translate(0, 125)">
+      <g transform="translate(0, 0)">
+        <circle cx="6" cy="6" r="4" fill="#10B981"/>
+        <text x="16" y="10" font-size="12" font-weight="700" fill="#CBD5E1">No Data, No Fee Guarantee</text>
+      </g>
+      <g transform="translate(240, 0)">
+        <circle cx="6" cy="6" r="4" fill="#38BDF8"/>
+        <text x="16" y="10" font-size="12" font-weight="700" fill="#CBD5E1">Non-Destructive Forensics</text>
+      </g>
+      <g transform="translate(460, 0)">
+        <circle cx="6" cy="6" r="4" fill="#A855F7"/>
+        <text x="16" y="10" font-size="12" font-weight="700" fill="#CBD5E1">24/7 Priority Emergency</text>
+      </g>
+      <g transform="translate(700, 0)">
+        <text x="0" y="10" font-size="12" font-weight="700" fill="#38BDF8">Al Barsha 1, Dubai &#8226; +971 56 410 1040</text>
+      </g>
+    </g>
+  </g>
+</svg>

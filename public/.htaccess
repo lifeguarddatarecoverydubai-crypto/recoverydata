@@ -1,0 +1,81 @@
+# ==============================================================================
+# Recovery Data CMS - Hardened Public Apache Configuration
+# Enterprise Security, Bot Filtering, Upload Protection, and Security Headers
+# ==============================================================================
+
+# 1. Disable directory browsing, server signature, and script execution in public
+Options -MultiViews -Indexes -ExecCGI
+ServerSignature Off
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # 1. Strip accidental /public/ from URL if client requested it directly
+    RewriteCond %{THE_REQUEST} \s/+public/([^\s?]*) [NC]
+    RewriteRule ^ https://www.recoverydata.ae/%1 [R=301,L]
+
+    # 2. Enforce HTTPS and www.recoverydata.ae for production domain
+    RewriteCond %{HTTP_HOST} ^recoverydata\.ae$ [NC]
+    RewriteRule ^(.*)$ https://www.recoverydata.ae/$1 [R=301,L]
+
+    # 3. Redirect legacy WordPress wp-content/uploads to storage/
+    RewriteRule ^wp-content/uploads/(.*)$ /storage/$1 [R=301,L]
+
+    # 4. Block direct execution of any script or PHP file inside public subfolders
+    RewriteCond %{REQUEST_URI} ^/(storage|images|uploads|media|css|js|build)/.*(?i)\.(php|phtml|php[0-9]|phps|phar|sh|cgi|py|exe|pl|bat|cmd|jsp|asp|aspx)$
+    RewriteRule .* - [F,L]
+
+    # 3. Block malicious HTTP request methods
+    RewriteCond %{REQUEST_METHOD} ^(TRACE|TRACK|DEBUG) [NC]
+    RewriteRule .* - [F,L]
+
+    # 4. Block common web attack patterns in query strings (SQLi, Path Traversal, RFI, XSS)
+    RewriteCond %{QUERY_STRING} (\.\./|\.\.\\|%2e%2e) [NC,OR]
+    RewriteCond %{QUERY_STRING} (union.*select|insert.*into|drop.*table|benchmark\(|sleep\(|waitfor.*delay) [NC,OR]
+    RewriteCond %{QUERY_STRING} (=http(s)?://|=ftp://) [NC,OR]
+    RewriteCond %{QUERY_STRING} (base64_encode|base64_decode|eval\(|<.*script.*>) [NC]
+    RewriteRule .* - [F,L]
+
+    # 5. Block known malicious vulnerability scanners and exploit bots
+    RewriteCond %{HTTP_USER_AGENT} (sqlmap|nikto|havij|acunetix|wpscan|masscan|zgrab|nmap|nessus|openvas|dirbuster|gobuster|jbrofuzz|pangolin|cgiscan) [NC]
+    RewriteRule .* - [F,L]
+
+    # 6. Handle Authorization Header
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+    # 7. Handle X-XSRF-Token Header
+    RewriteCond %{HTTP:x-xsrf-token} .
+    RewriteRule .* - [E=HTTP_X_XSRF_TOKEN:%{HTTP:X-XSRF-Token}]
+
+    # 8. Redirect Trailing Slashes If Not A Folder...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} (.+)/$
+    RewriteRule ^ %1 [L,R=301]
+
+    # 9. Send Requests To Front Controller (Laravel index.php)...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L]
+</IfModule>
+
+# 10. Deny access to sensitive extensions and hidden files
+<FilesMatch "^\.|\.(bak|config|sql|sqlite|ini|log|sh|inc|swp|dist|env|yml|yaml|md|json|lock)$">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Deny from all
+    </IfModule>
+</FilesMatch>
+
+# 11. Enforce HTTP Security Headers
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set X-XSS-Protection "1; mode=block"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=()"
+    Header unset X-Powered-By
+</IfModule>

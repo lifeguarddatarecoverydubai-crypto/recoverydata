@@ -1,0 +1,29 @@
+# ==============================================================================
+# Recovery Data CMS - Root Directory Security & Canonical Redirect Rules
+# Prevents unauthorized access and enforces HTTPS, www, and clean URLs
+# ==============================================================================
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # 1. Block direct access to sensitive configuration, database, and repository files
+    RewriteRule ^(\.env|\.git|\.github|composer\.|package\.|artisan|database/|storage/logs/|storage/framework/|app/|bootstrap/|config/|resources/|routes/|vendor/) - [F,L,NC]
+
+    # 2. Prevent access to files with sensitive extensions
+    RewriteRule \.(env|yml|yaml|json|lock|sql|sqlite|log|sh|bak|swp|dist|md)$ - [F,L,NC]
+
+    # 3. Strip accidental /public/ from URL if client requested it directly
+    RewriteCond %{THE_REQUEST} \s/+public/([^\s?]*) [NC]
+    RewriteRule ^ https://www.recoverydata.ae/%1 [R=301,L]
+
+    # 4. Enforce HTTPS and www.recoverydata.ae for production domain
+    RewriteCond %{HTTP_HOST} ^recoverydata\.ae$ [NC]
+    RewriteRule ^(.*)$ https://www.recoverydata.ae/$1 [R=301,L]
+
+    # 5. Route all legitimate web traffic into the /public folder
+    RewriteCond %{REQUEST_URI} !^/public/
+    RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>
+
+# Disable directory browsing
+Options -Indexes

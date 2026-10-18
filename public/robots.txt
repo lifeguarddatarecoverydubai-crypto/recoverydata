@@ -1,0 +1,30 @@
+# robots.txt for Recovery Data Dubai
+# Website: https://www.recoverydata.ae
+
+User-agent: *
+Allow: /
+Allow: /images/
+Allow: /storage/
+Allow: /build/
+Allow: /css/
+Allow: /js/
+Disallow: /admin
+Disallow: /admin/
+Disallow: /login
+Disallow: /login/
+Disallow: /register
+Disallow: /register/
+Disallow: /password/
+Disallow: /api/
+Disallow: /public/
+Disallow: /storage/framework/
+
+# XML Sitemaps
+Sitemap: https://www.recoverydata.ae/sitemap-index.xml
+Sitemap: https://www.recoverydata.ae/sitemap.xml
+Sitemap: https://www.recoverydata.ae/sitemap-posts.xml
+Sitemap: https://www.recoverydata.ae/sitemap-services.xml
+Sitemap: https://www.recoverydata.ae/sitemap-pages.xml
+Sitemap: https://www.recoverydata.ae/sitemap-categories.xml
+
+Host: www.recoverydata.ae
